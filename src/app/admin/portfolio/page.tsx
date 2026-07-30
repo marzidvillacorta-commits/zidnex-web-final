@@ -32,9 +32,7 @@ export default function PortfolioPage() {
     try {
       const res = await createProject(formData);
       if (!res?.success) throw new Error(res?.error || "Error desconocido");
-      setIsAdding(false);
-      setFormData({ title: "", description: "", image: "", link: "", tags: "" });
-      loadProjects();
+      window.location.reload();
     } catch (err: any) {
       alert("Error al guardar el proyecto: " + (err.message || String(err)));
     }
@@ -45,7 +43,7 @@ export default function PortfolioPage() {
       try {
         const res = await deleteProject(id);
         if (!res?.success) throw new Error(res?.error || "Error desconocido");
-        loadProjects();
+        window.location.reload();
       } catch (err: any) {
         alert("Error al eliminar el proyecto: " + (err.message || String(err)));
       }

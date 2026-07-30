@@ -1,7 +1,6 @@
 "use server";
 
 import { getPrisma } from "@/lib/db";
-import { revalidatePath } from "next/cache";
 
 export async function getProjects() {
   const prisma = await getPrisma();
@@ -20,7 +19,6 @@ export async function createProject(data: { title: string; description: string; 
         link: data.link || null,
       },
     });
-    revalidatePath("/", "layout");
     return { success: true };
   } catch (error: any) {
     console.error("Error creating project:", error);
@@ -34,7 +32,6 @@ export async function deleteProject(id: string) {
     await prisma.project.delete({
       where: { id },
     });
-    revalidatePath("/", "layout");
     return { success: true };
   } catch (error: any) {
     console.error("Error deleting project:", error);

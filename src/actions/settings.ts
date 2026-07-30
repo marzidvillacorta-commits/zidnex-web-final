@@ -1,7 +1,6 @@
 "use server";
 
 import { getPrisma } from "@/lib/db";
-import { revalidatePath } from "next/cache";
 
 export async function getSetting(key: string) {
   const prisma = await getPrisma();
@@ -16,7 +15,4 @@ export async function saveSetting(key: string, value: string) {
     update: { value },
     create: { key, value },
   });
-  
-  // Revalidate entire layout to show new data immediately on frontend
-  revalidatePath("/", "layout");
 }
