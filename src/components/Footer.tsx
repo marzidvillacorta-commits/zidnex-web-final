@@ -65,9 +65,16 @@ export default async function Footer() {
               href={`https://wa.me/${phone}?text=Hola%20Zidnex%20Digital`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-white/10 hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 backdrop-blur-sm"
+              className="inline-flex items-center justify-center bg-white/10 hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 backdrop-blur-sm mb-4"
             >
               Contactar por WhatsApp
+            </a>
+            <a 
+              href={`mailto:${email}`}
+              className="text-slate-400 text-sm font-medium hover:text-white transition-colors flex items-center gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinelinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              {email}
             </a>
           </div>
 

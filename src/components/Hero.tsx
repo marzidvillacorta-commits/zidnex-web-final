@@ -61,7 +61,7 @@ export default function Hero() {
             Sistemas
           </h1>
           <h1 
-            className="font-[family-name:var(--font-heading)] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 leading-[0.85] tracking-tight w-full text-center"
+            className="font-[family-name:var(--font-heading)] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 leading-[0.85] tracking-tight w-full text-center pb-4 md:pb-8"
             style={{ fontSize: "clamp(3.5rem, 12vw, 15rem)" }}
           >
             Digitales

@@ -40,38 +40,38 @@ export default function CookieConsent() {
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 shadow-[0_-4px_20px_-10px_rgba(0,0,0,0.1)]"
         >
-          <div className="container mx-auto px-6 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 relative">
+          <div className="container mx-auto px-4 py-3 md:py-3 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6 relative">
             <button 
               onClick={handleDecline}
-              className="absolute top-2 right-2 md:hidden text-slate-400 hover:text-slate-600 transition-colors"
+              className="absolute top-1 right-2 md:hidden text-slate-400 hover:text-slate-600 transition-colors"
               aria-label="Cerrar"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
             
-            <div className="flex items-center gap-4 flex-1">
-              <div className="bg-blue-50 p-2.5 rounded-full text-blue-600 shrink-0 hidden md:flex">
-                <Cookie className="w-5 h-5" />
+            <div className="flex items-center gap-3 flex-1">
+              <div className="bg-slate-100 p-1.5 rounded-full text-slate-500 shrink-0 hidden md:flex">
+                <Cookie className="w-4 h-4" />
               </div>
-              <div className="text-sm text-slate-600 leading-relaxed max-w-4xl pr-6 md:pr-0">
+              <div className="text-[13px] text-slate-500 leading-snug max-w-5xl pr-4 md:pr-0">
                 Utilizamos cookies propias y de terceros para asegurar el correcto funcionamiento del sitio y entender cómo interactúas con él. 
-                Al continuar navegando, consideramos que aceptas su uso.{' '}
-                <Link href="/legal/privacidad" className="text-blue-600 hover:text-blue-700 font-medium underline underline-offset-2 ml-1">
+                Al continuar navegando, aceptas su uso.{' '}
+                <Link href="/legal/privacidad" className="text-slate-700 hover:text-blue-600 font-medium underline underline-offset-2 ml-1 transition-colors">
                   Ver Política de Privacidad
                 </Link>
               </div>
             </div>
 
-            <div className="flex w-full md:w-auto gap-3 shrink-0">
+            <div className="flex w-full md:w-auto gap-2 shrink-0">
               <button
                 onClick={handleDecline}
-                className="flex-1 md:flex-none px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-lg transition-colors text-sm"
+                className="flex-1 md:flex-none px-4 py-2 bg-transparent border border-slate-200 hover:bg-slate-50 text-slate-600 font-medium rounded-md transition-colors text-[13px]"
               >
                 Rechazar
               </button>
               <button
                 onClick={handleAccept}
-                className="flex-1 md:flex-none px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded-lg transition-colors text-sm"
+                className="flex-1 md:flex-none px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded-md transition-colors text-[13px]"
               >
                 Aceptar todas
               </button>
