@@ -30,7 +30,8 @@ export default function PortfolioPage() {
   const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await createProject(formData);
+      const res = await createProject(formData);
+      if (!res?.success) throw new Error(res?.error || "Error desconocido");
       setIsAdding(false);
       setFormData({ title: "", description: "", image: "", link: "", tags: "" });
       loadProjects();
@@ -41,8 +42,13 @@ export default function PortfolioPage() {
 
   const handleDelete = async (id: string) => {
     if(confirm("¿Estás seguro de eliminar este proyecto?")) {
-      await deleteProject(id);
-      loadProjects();
+      try {
+        const res = await deleteProject(id);
+        if (!res?.success) throw new Error(res?.error || "Error desconocido");
+        loadProjects();
+      } catch (err: any) {
+        alert("Error al eliminar el proyecto: " + (err.message || String(err)));
+      }
     }
   };
 

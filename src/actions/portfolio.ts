@@ -21,9 +21,10 @@ export async function createProject(data: { title: string; description: string; 
       },
     });
     revalidatePath("/", "layout");
-  } catch (error) {
+    return { success: true };
+  } catch (error: any) {
     console.error("Error creating project:", error);
-    throw new Error("Failed to create project in database.");
+    return { success: false, error: String(error.message || error) };
   }
 }
 
@@ -34,8 +35,9 @@ export async function deleteProject(id: string) {
       where: { id },
     });
     revalidatePath("/", "layout");
-  } catch (error) {
+    return { success: true };
+  } catch (error: any) {
     console.error("Error deleting project:", error);
-    throw new Error("Failed to delete project in database.");
+    return { success: false, error: String(error.message || error) };
   }
 }
