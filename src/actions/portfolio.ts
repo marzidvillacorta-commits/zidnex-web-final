@@ -15,6 +15,7 @@ export async function createProject(data: { title: string; description: string; 
     const prisma = await getPrisma();
     await prisma.project.create({
       data: {
+        id: crypto.randomUUID(),
         ...data,
         link: data.link || null,
       },
