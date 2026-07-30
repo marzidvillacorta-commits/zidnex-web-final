@@ -29,10 +29,14 @@ export default function PortfolioPage() {
 
   const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
-    await createProject(formData);
-    setIsAdding(false);
-    setFormData({ title: "", description: "", image: "", link: "", tags: "" });
-    loadProjects();
+    try {
+      await createProject(formData);
+      setIsAdding(false);
+      setFormData({ title: "", description: "", image: "", link: "", tags: "" });
+      loadProjects();
+    } catch (err: any) {
+      alert("Error al guardar el proyecto: " + (err.message || String(err)));
+    }
   };
 
   const handleDelete = async (id: string) => {
