@@ -17,7 +17,7 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
-    const data = await req.json();
+    const data = await req.json() as any;
     const prisma = await getPrisma();
     
     await prisma.project.create({
