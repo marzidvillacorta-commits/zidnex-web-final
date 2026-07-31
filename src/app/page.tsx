@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 
 import { getPrisma } from "@/lib/db";
 
+export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
