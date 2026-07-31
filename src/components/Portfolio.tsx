@@ -21,7 +21,7 @@ export default function Portfolio() {
   useEffect(() => {
     fetch("/api/portfolio")
       .then(res => res.json())
-      .then(data => {
+      .then((data: any) => {
         if (data.success) {
           setProjects(data.projects);
         }
