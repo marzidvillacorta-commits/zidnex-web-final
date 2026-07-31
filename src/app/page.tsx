@@ -8,17 +8,7 @@ import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
-import { getPrisma } from "@/lib/db";
-
-export const runtime = "edge";
-export const dynamic = "force-dynamic";
-
-export default async function Home() {
-  const prisma = await getPrisma();
-  const projects = await prisma.project.findMany({
-    orderBy: { createdAt: "desc" },
-  });
-
+export default function Home() {
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
       <Navbar />
@@ -27,7 +17,7 @@ export default async function Home() {
         <About />
         <Services />
         <Process />
-        <Portfolio projects={projects} />
+        <Portfolio />
         <Faq />
         <Contact />
         <Footer />
