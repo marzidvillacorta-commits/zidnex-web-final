@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getProjects, createProject, deleteProject } from "@/actions/portfolio";
 import { Plus, Trash2, ExternalLink } from "lucide-react";
 
 type Project = {
@@ -19,8 +18,15 @@ export default function PortfolioPage() {
   const [formData, setFormData] = useState({ title: "", description: "", image: "", link: "", tags: "" });
 
   const loadProjects = async () => {
-    const data = await getProjects();
-    setProjects(data);
+    try {
+      const res = await fetch("/api/portfolio");
+      const data = await res.json();
+      if (data.success) {
+        setProjects(data.projects);
+      }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   useEffect(() => {
@@ -30,8 +36,13 @@ export default function PortfolioPage() {
   const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await createProject(formData);
-      if (!res?.success) throw new Error(res?.error || "Error desconocido");
+      const res = await fetch("/api/portfolio", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json();
+      if (!data?.success) throw new Error(data?.error || "Error desconocido");
       window.location.reload();
     } catch (err: any) {
       alert("Error al guardar el proyecto: " + (err.message || String(err)));
@@ -41,8 +52,9 @@ export default function PortfolioPage() {
   const handleDelete = async (id: string) => {
     if(confirm("¿Estás seguro de eliminar este proyecto?")) {
       try {
-        const res = await deleteProject(id);
-        if (!res?.success) throw new Error(res?.error || "Error desconocido");
+        const res = await fetch("/api/portfolio?id=" + id, { method: "DELETE" });
+        const data = await res.json();
+        if (!data?.success) throw new Error(data?.error || "Error desconocido");
         window.location.reload();
       } catch (err: any) {
         alert("Error al eliminar el proyecto: " + (err.message || String(err)));
