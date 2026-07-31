@@ -10,6 +10,8 @@ import Footer from "@/components/Footer";
 
 import { getPrisma } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const prisma = await getPrisma();
   const projects = await prisma.project.findMany({
