@@ -20,7 +20,7 @@ export default function PortfolioPage() {
   const loadProjects = async () => {
     try {
       const res = await fetch("/api/portfolio");
-      const data = await res.json();
+      const data = await res.json() as any;
       if (data.success) {
         setProjects(data.projects);
       }
@@ -41,7 +41,7 @@ export default function PortfolioPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
-      const data = await res.json();
+      const data = await res.json() as any;
       if (!data?.success) throw new Error(data?.error || "Error desconocido");
       window.location.reload();
     } catch (err: any) {
@@ -53,7 +53,7 @@ export default function PortfolioPage() {
     if(confirm("¿Estás seguro de eliminar este proyecto?")) {
       try {
         const res = await fetch("/api/portfolio?id=" + id, { method: "DELETE" });
-        const data = await res.json();
+        const data = await res.json() as any;
         if (!data?.success) throw new Error(data?.error || "Error desconocido");
         window.location.reload();
       } catch (err: any) {
